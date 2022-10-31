@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Hello, Flask</title>
+        <link rel="stylesheet" href="https://unpkg.com/charts.css/dist/charts.min.css">
+        <link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='index.css')}}">
+    </head>
+    <body>
+        <div class="container">
+        {%if id %}
+            <div class="header">
+                <h1><strong>Machine id: {{id}}</strong></h1>
+
+            </div>
+            <div class="info">
+                <table cellspacing=0 cellpadding=2 class="customerInfo">
+                    <tr>
+                        <th>Customer</th>
+                        <td>20387 - Megacrop</td>
+                    </tr>
+                    <tr>
+                        <th>Driver name</th>
+                        <td>J. Doe</td>
+                    </tr>
+                    <tr>
+                        <th>Car Number</th>
+                        <td>5918</td>
+                    </tr>
+                    <tr>
+                        <th>Operator</th>
+                        <td>29 - R. Bisperink</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="input">
+                <table  cellspacing=0 cellpadding=2>
+                    <tr>
+                        <th></th>
+                        <th>Agg1</th>
+                        <th>Agg2</th>
+                        <th>Agg3</th>
+                        <th>Agg4</th>
+                        <th>Agg5</th>
+                    </tr>
+                    <tr>
+                        <th>Err.</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Req.</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Fin.</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Slow</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr class="flow">
+                        <th></th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td style="color:yellow">0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr class="funnels">
+                      <th />
+                        <td/><td/><td/><td/><td/>
+                  </tr>
+                  <tr class="status">
+                      <th/>
+                        <td/><td/><td class="orange"/><td/><td/>
+                  </tr>
+                </table>
+                <img src="/static/img/Mobile-Concrete-Plant-Mobile.jpg" alt="">
+            </div>
+            <div class="output">
+                <table cellspacing=0 cellpadding=2>
+                    <tr>
+                        <th></th>
+                        <th>Cement</th>
+                        <th>Water</th>
+                        <th>Additives</th>
+                    </tr>
+                    <tr>
+                        <th>Err.</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Reg.</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Slow</th>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr class="flow">
+                        <th></td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="production">
+                <h2>Order Status</h2>
+                <table class="charts-css line reverse show-10-secondary-axes show-data-axes show-data-on-hover" id="my-chart">
+                    <tbody>
+                    <tr>
+                            <td style="--start: 0.0; --size: 0.0"> <span class="data"> {{date}} </span> </td>
+                          </tr>
+                      <tr>
+                        <td style="--start: 0.0; --size: 0.15"> <span class="data"> {{date}} </span> </td>
+                      </tr>
+                      <tr>
+                        <td style="--start: 0.15; --size: 0.20"> <span class="data"> {{date}} </span> </td>
+                      </tr>
+                      <tr>
+                        <td style="--start: 0.20; --size: 0.35"> <span class="data"> {{date}} </span> </td>
+                      </tr>
+                      <tr>
+                        <td style="--start: 0.35; --size: 0.5"> <span class="data"> {{date}} </span> </td>
+                      </tr>
+                      <tr>
+                        <td style="--start: 0.5; --size: 0.6"> <span class="data"> {{date}} </span> </td>
+                      </tr>
+                      <tr>
+                        <td style="--start: 0.6; --size: 0.7"> <span class="data"> {{date}} </span> </td>
+                      </tr>
+                      <tr>
+                        <td style="--start: 0.7; --size: 0.8"> <span class="data"> {{date}} </span> </td>
+                      </tr>
+                    </tbody>
+                  
+                  </table>
+                  
+            </div>
+            
+            
+        {% else %}
+            No id was entered, please select a machine from the home page.
+        {% endif %}
+    </div>
+    </body>
+</html>
