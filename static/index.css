@@ -1,14 +1,31 @@
+:root{
+    --bg1: #999;
+    --bg2: #333;
+    --bg3:#666;
+    --bg4:#ccc;
+    --success: #46FF64;
+    --warning:#FFF546;
+    --alarm:#Fa3232;
+    --vis1:#002878;
+    --vis2:#5064B4;
+    --vis3: #C8ECFA;
+    --vis4: #008C3C;
+}
+body{background-color: var(--bg4);
+font-family: Arial, Helvetica, sans-serif;}
 .flow>td{
-    background-color: black;
-    color: rgb(0, 255, 0);
+    background-color: var(--vis1);
+    color: var(--success);
     font-weight: bold;
     text-align: right;
 }
 th{
-    background-color: rgb(190, 190, 190);
+    background-color: var(--vis1);
+    color: white;
     text-align: left;
     padding-right: 20px;
 }
+body{background-color: ;}
 table{border: none ;} 
 .input{ grid-area: input;}
 .output{ grid-area: output;}
@@ -27,6 +44,7 @@ table{border: none ;}
     width: 50%;
     margin: auto;
 }
+
 #my-chart.line{
     height:300px;
     max-width: 100%;
@@ -35,6 +53,9 @@ table{border: none ;}
 #my-chart{
     font-size: smaller;
 }
+.dataCell{
+    background-color: white;
+}
 .input>table>tbody>tr>td{
     border: 2px solid grey;
     border-bottom: none;
@@ -42,7 +63,7 @@ table{border: none ;}
   }
 .flow>td{
     background-color:black;
-    color:green;
+    color:var(--success);
 }
 .funnels>td{
     height:20px;
@@ -52,13 +73,58 @@ table{border: none ;}
 .status>td{
     height:10px;
     width:20px;
-    background-color:green;
+    background-color:var(--success);
     border:none;
-  }
-  .orange{
-    background-color:yellow !important;
-  }
+}
+.orange{
+    background-color:var(--warning) !important;
+}
+img{ max-width: 400px; margin-top: 40px;}
+.pipe{ height: 100px;
 
-  img{
-    max-width: 400px;
-  }
+border: none !important;}
+.pipe>div{
+    width: 8px;
+    background-color: var(--bg2);
+    margin: 0 auto;
+    height: 100%;
+}
+
+.bg-white{background-color: var(--bg4);}
+#Mixbak{
+    width: 300px;
+    height: 80px;
+    margin-left: 40px;
+    
+}
+#Mixbak>.top{
+    width: 300px;
+    height: 40px;
+    background-color: var(--warning);
+}
+#Mixbak>.top:after{
+    content: "";
+    position: absolute;
+    margin: -40px;
+    margin-top: 0px;
+    width: 80px;
+    height: 80px;
+    transform: rotate(-45deg);
+    background-color: var(--bg4);
+}
+#Mixbak>.top:before{
+    content: "";
+    position: absolute;
+    margin: 260px;
+    margin-top: 0px;
+    width: 80px;
+    height: 80px;
+    transform: rotate(-45deg);
+    background-color: var(--bg4);
+} 
+#Mixbak>.bottom{
+    width: 200px;
+    margin: 0 auto;
+    height: 40px;
+    background-color: black;
+}
