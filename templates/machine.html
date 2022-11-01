@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Hello, Flask</title>
+        <title>HMI Machine {{id}}</title>
         <link rel="stylesheet" href="https://unpkg.com/charts.css/dist/charts.min.css">
         <link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='index.css')}}">
     </head>
@@ -14,62 +14,62 @@
 
             </div>
             <div class="info">
-                <table cellspacing=0 cellpadding=2 class="customerInfo">
+                <table cellspacing=0 cellpadding=2 class="customerInfo" style="width: 100%;">
                     <tr>
                         <th>Customer</th>
-                        <td class="dataCell">20387 - FHI-BetonEurope</td>
+                        <td class="dataCell p-3">20387 - FHI-BetonEurope</td>
                     </tr>
                     <tr>
                         <th>Driver name</th>
-                        <td class="dataCell">H. Ford</td>
+                        <td class="dataCell p-3">H. Ford</td>
                     </tr>
                     <tr>
                         <th>Car Number</th>
-                        <td class="dataCell">5918</td>
+                        <td class="dataCell p-3">5918</td>
                     </tr>
                     <tr>
                         <th>Operator</th>
-                        <td class="dataCell">29 - C. Mentinge</td>
+                        <td class="dataCell p-3">29 - C. Mentinge</td>
                     </tr>
                 </table>
                 <img src="" alt="">
             </div>
             <div class="input">
-                <table  cellspacing=0 cellpadding=2>
+                <table class="inputTable"  cellspacing=0 cellpadding=2 style="width: 100%;">
                     <tr>
-                        <th></th>
-                        <th>Calc</th>
-                        <th>Silicium</th>
-                        <th>Alu.</th>
-                        <th>Ferrum</th>
+                        <th style="width: 80px;"></th>
+                        <th>Cal</th>
+                        <th>Sil</th>
+                        <th>Alu</th>
+                        <th>Fer</th>
                      
                     </tr>
                     <tr>
-                        <th>Err.</th>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
+                        <th style="text-align: right;">Err.</th>
+                        <td class="dataCell">{% if error %}1{% else %}0 {% endif %}</td>
+                        <td class="dataCell">{% if error %}1{% else %}0 {% endif %}</td>
+                        <td class="dataCell">{% if error %}1{% else %}0 {% endif %}</td>
+                        <td class="dataCell">{% if error %}1{% else %}0 {% endif %}</td>
                      
                     </tr>
                     <tr>
-                        <th>Req.</th>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
+                        <th style="text-align: right;">Req.</th>
+                        <td class="dataCell">21</td>
+                        <td class="dataCell">52</td>
+                        <td class="dataCell">35</td>
+                        <td class="dataCell">35</td>
                      
                     </tr>
                     <tr>
-                        <th>Fin.</th>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
+                        <th style="text-align: right;">Fin.</th>
+                        <td class="dataCell">192</td>
+                        <td class="dataCell">208</td>
+                        <td class="dataCell">477</td>
+                        <td class="dataCell">78</td>
                      
                     </tr>
                     <tr>
-                        <th>Slow</th>
+                        <th style="text-align: right;">Slow</th>
                         <td class="dataCell">0</td>
                         <td class="dataCell">0</td>
                         <td class="dataCell">0</td>
@@ -78,19 +78,32 @@
                     </tr>
                     <tr class="flow">
                         <th></th>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
-                        <td style="color:yellow">0</td>
-                        <td class="dataCell">0</td>
+                        {% if error %}
+                        <td class="dataCell alarm"><div class="blink red">ERROR</div></td>
+                        <td class="dataCell alarm"><div class="blink red">ERROR</div></td>
+                        <td class="dataCell alarm"><div class="blink red">ERROR</div></td>
+                        <td class="dataCell alarm"><div class="blink red">ERROR</div></td>
+                        {% else %}
+                        <td class="dataCell">21</td>
+                        <td class="dataCell">52</td>
+                        <td class="dataCell">35</td>
+                        <td class="dataCell">35</td>
+                        {% endif %}
                         
                     </tr>
+                    
                     <tr class="funnels">
                       <th />
                         <td/><td/><td/><td/>
                   </tr>
-                  <tr class="status">
+                  {% if error %}
+                  <tr class="status bg-red">
+                    {% else %}
+                    <tr class="status">
+                    {% endif %}
+                  
                       <th/>
-                        <td/><td/><td class="orange"/><td/>
+                        <td/><td/><td class=""/><td/>
                   </tr>
                   <tr>
                     <th class="bg-white"></th>
@@ -106,42 +119,226 @@
                     <div class="bottom"></div>
                 </div>
                 <!--<img src="/static/img/Mobile-Concrete-Plant-Mobile.jpg" alt=""> -->
-            </div>
-            <div class="output">
-                <table cellspacing=0 cellpadding=2>
+                <table cellspacing=0 cellpadding=2 class="mt-3" style="width: 100%;">
                     <tr>
                         <th></th>
-                        <th>Cement</th>
-                        <th>Water</th>
-                        <th>Additives</th>
+                        <th>Cem.</th>
+                        <th>Wat.</th>
+                        <th>Add.</th>
                     </tr>
                     <tr>
-                        <th>Err.</th>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
+                        <th style="text-align: right;">Err.</th>
+                        <td class="dataCell">{% if error %}1{% else %}0 {% endif %}</td>
+                        <td class="dataCell">{% if error %}1{% else %}0 {% endif %}</td>
+                        <td class="dataCell">{% if error %}1{% else %}0 {% endif %}</td>
                     </tr>
                     <tr>
-                        <th>Reg.</th>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
+                        <th style="text-align: right;">Reg.</th>
+                        <td class="dataCell">1.03</td>
+                        <td class="dataCell">0.63</td>
+                        <td class="dataCell">0.22</td>
                     </tr>
                     <tr>
-                        <th>Slow</th>
+                        <th style="text-align: right;">Slow</th>
                         <td class="dataCell">0</td>
                         <td class="dataCell">0</td>
                         <td class="dataCell">0</td>
                     </tr>
                     <tr class="flow">
                         <th></td>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
-                        <td class="dataCell">0</td>
+                        {% if error %}
+                        <td class="dataCell alarm"><div class="blink red">ERROR</div></td>
+                        <td class="dataCell alarm"><div class="blink red">ERROR</div></td>
+                        <td class="dataCell alarm"><div class="blink red">ERROR</div></td>
+                        {% else %}
+                        <td class="dataCell">1.05</td>
+                        <td class="dataCell">0.61</td>
+                        <td class="dataCell">0.22</td>
+                        {% endif %}
+                        
                     </tr>
                 </table>
             </div>
+            <div class="output">
+                
+
+                <table class="wikitable floatright " style=" text-align:right;">
+                    <tbody><tr>
+                    <th colspan="2" scope="col">Property
+                    </th>
+                    <th scope="col">Portland <br>cement
+                    </th>
+                    <th scope="col">Siliceous<sup id="cite_ref-45" class="reference"><a href="#cite_note-45">[b]</a></sup> <br>fly ash
+                    </th>
+                    <th scope="col">Calcareous<sup id="cite_ref-46" class="reference"><a href="#cite_note-46">[c]</a></sup> <br>fly ash
+                    </th>
+                    <th scope="col">Slag <br>cement
+                    </th>
+                    <th scope="col">Silica <br>fume
+                    </th></tr>
+                    <tr style="text-align:right;">
+                    <th scope="row" rowspan="6" class="nowrap unsortable" style="line-height:99%;vertical-align:middle;padding:.4em .4em .2em;background-position:50% .4em !important;min-width:0.875em;max-width:0.875em;width:0.875em;overflow:hidden;"><div style="-webkit-writing-mode: vertical-rl; -o-writing-mode: vertical-rl; -ms-writing-mode: tb-rl;writing-mode: tb-rl; writing-mode: vertical-rl; layout-flow: vertical-ideographic;display: inline-block; -ms-transform: rotate(180deg); -webkit-transform: rotate(180deg); transform: rotate(180deg);;-ms-transform: none ;padding-left:1px;text-align:center;">Proportion by mass (%)</div>
+                    </th>
+                    <th scope="row">SiO<sub>2</sub>
+                    </th>
+                    <td class="dataCell">21.9
+                    </td>
+                    <td class="dataCell">52
+                    </td>
+                    <td class="dataCell">35
+                    </td>
+                    <td class="dataCell">35
+                    </td>
+                    <td class="dataCell">85–97
+                    </td></tr>
+                    <tr>
+                    <th scope="row">Al<sub>2</sub>O<sub>3</sub>
+                    </th>
+                    <td class="dataCell">6.9
+                    </td>
+                    <td class="dataCell">23
+                    </td>
+                    <td class="dataCell">18
+                    </td>
+                    <td class="dataCell">12
+                    </td>
+                    <td class="dataCell">—
+                    </td></tr>
+                    <tr>
+                    <th scope="row">Fe<sub>2</sub>O<sub>3</sub>
+                    </th>
+                    <td class="dataCell">3
+                    </td>
+                    <td class="dataCell">11
+                    </td>
+                    <td class="dataCell">6
+                    </td>
+                    <td class="dataCell">1
+                    </td>
+                    <td class="dataCell">—
+                    </td></tr>
+                    <tr>
+                    <th scope="row">CaO
+                    </th>
+                    <td class="dataCell">63
+                    </td>
+                    <td class="dataCell">5
+                    </td>
+                    <td class="dataCell">21
+                    </td>
+                    <td class="dataCell">40
+                    </td>
+                    <td class="dataCell">&lt; 1
+                    </td></tr>
+                    <tr>
+                    <th scope="row">MgO
+                    </th>
+                    <td class="dataCell">2.5
+                    </td>
+                    <td class="dataCell">—
+                    </td>
+                    <td class="dataCell">—
+                    </td>
+                    <td class="dataCell">—
+                    </td>
+                    <td class="dataCell">—
+                    </td></tr>
+                    <tr>
+                    <th scope="row">SO<sub>3</sub>
+                    </th>
+                    <td class="dataCell">1.7
+                    </td>
+                    <td class="dataCell">—
+                    </td>
+                    <td class="dataCell">—
+                    </td>
+                    <td class="dataCell">—
+                    </td>
+                    <td class="dataCell">—
+                    </td></tr>
+                    <tr>
+                    <th scope="row" colspan="2">Specific surface (m<sup>2</sup>/kg)<sup id="cite_ref-47" class="reference"><a href="#cite_note-47">[d]</a></sup>
+                    </th>
+                    <td class="dataCell">370
+                    </td>
+                    <td class="dataCell">420
+                    </td>
+                    <td class="dataCell">420
+                    </td>
+                    <td class="dataCell">400
+                    </td>
+                    <td class="dataCell">15,000 <br>– 30,000
+                    </td></tr>
+                    <tr>
+                    <th scope="row" colspan="2">Specific gravity
+                    </th>
+                    <td class="dataCell">3.15
+                    </td>
+                    <td class="dataCell">2.38
+                    </td>
+                    <td class="dataCell">2.65
+                    </td>
+                    <td class="dataCell">2.94
+                    </td>
+                    <td class="dataCell">2.22
+                    </td></tr>
+                    <tr style="text-align:center;">
+                    <th scope="row" colspan="2">General purpose
+                    </th>
+                    <td class="dataCell">Primary binder
+                    </td>
+                    <td class="dataCell">Cement replacement
+                    </td>
+                    <td class="dataCell">Cement replacement
+                    </td>
+                    <td class="dataCell">Cement replacement
+                    </td>
+                    <td class="dataCell">Property enhancer
+                    </td></tr>
+                    <tr style="text-align:left;">
+                    <td colspan="7"><style data-mw-deduplicate="TemplateStyles:r1011085734">.mw-parser-output .reflist{font-size:90%;margin-bottom:0.5em;list-style-type:decimal}.mw-parser-output .reflist .references{font-size:100%;margin-bottom:0;list-style-type:inherit}.mw-parser-output .reflist-columns-2{column-width:30em}.mw-parser-output .reflist-columns-3{column-width:25em}.mw-parser-output .reflist-columns{margin-top:0.3em}.mw-parser-output .reflist-columns ol{margin-top:0}.mw-parser-output .reflist-columns li{page-break-inside:avoid;break-inside:avoid-column}.mw-parser-output .reflist-upper-alpha{list-style-type:upper-alpha}.mw-parser-output .reflist-upper-roman{list-style-type:upper-roman}.mw-parser-output .reflist-lower-alpha{list-style-type:lower-alpha}.mw-parser-output .reflist-lower-greek{list-style-type:lower-greek}.mw-parser-output .reflist-lower-roman{list-style-type:lower-roman}</style><div class="reflist reflist-lower-alpha">
+                    <div class="mw-references-wrap"><ol class="references">
+                    
+                    </ol></div>
+                    </td></tr></tbody></table>
+                    <table class="statusTable">
+                        <tr>
+                            <th>Mixer</th>
+                            {% if error %} 
+                            <td class="alarm"><div class="blink" style="color: white;">HALTED</div> </td>
+                            {% else %}
+                            <td class="offState">OFF</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th>Water Pump</th>
+                            {% if error %} 
+                            <td class="alarm"><div class="blink" style="color: white;">HALTED</div> </td>
+                            {% else %}
+                            <td class="offState">OFF</td>
+                            {% endif %}
+                            
+                        </tr>
+                        <tr>
+                            <th>Air pressure</th>
+                            {% if error %} 
+                            <td class="alarm"><div class="blink" style="color: white;">HALTED</div> </td>
+                            {% else %}
+                            <td class="success">OK</td>
+                            {% endif %}
+                        </tr>
+                    </table>
+                    <div class="buttons">
+                        <a href="/HMI/{{ id }}/error"><button>Turn Off</button></a>
+                        <a href="/HMI/{{ id }}"><button>Turn On</button></a>
+                        <a href="/HMI/{{ id }}/error"><button class="alarm failsafe">Failsafe button</button></a>
+                    </div>
+                    
+
             </div>
+            
+            </div>
+            
             
         {% else %}
             No id was entered, please select a machine from the home page.

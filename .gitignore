@@ -1,0 +1,7 @@
+
+static/changes.txt
+*.pyc
+*.pyc
+__pycache__/app.cpython-311.pyc
+*.pyc
+*.pyc
